@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stc_health_app/Presentation/Widgets/Dashboard/dashboard_screen.dart';
 
 import 'Presentation/Widgets/Auth/Login/login.dart';
 
@@ -17,9 +18,12 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         useInheritedMediaQuery: true,
         builder: (context, child) {
-          return const MaterialApp(
+          return MaterialApp(
             title: 'STC HEALTH',
-            home: LoginPage(),
+            theme: ThemeData(
+              primarySwatch: Colors.blueGrey,
+            ),
+            home: const MyHomePage(),
             debugShowCheckedModeBanner: false,
           );
         });

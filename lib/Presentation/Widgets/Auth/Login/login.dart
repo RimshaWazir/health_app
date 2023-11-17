@@ -3,18 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/color_pallete.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/email_validator_extension.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/strings.dart';
+import 'package:stc_health_app/Presentation/Widgets/Auth/Component/textformfield_decoration.dart';
+import 'package:stc_health_app/Presentation/Widgets/Dashboard/dashboard_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
-  static String? validatorPassword(v) {
-    if (v.trim().isEmpty) {
-      return "Please provide password";
-    } else if (v.length < 8) {
-      return "Password should be 8 digits";
-    }
-
-    return null;
-  }
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -23,13 +16,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   static final GlobalKey<FormState> _key = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
-
-  // Initially password is obscure
   bool _obscureText = true;
-
-  // Toggles the password show status
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
@@ -108,53 +96,35 @@ class _LoginPageState extends State<LoginPage> {
                                 ? null
                                 : "Check your email",
                             controller: _emailController,
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(15),
-                                suffixIcon: const Icon(Icons.email_outlined),
-                                hintText: "example@gmail.com",
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: AppColors.greyLightColor,
-                                        width: 1),
-                                    borderRadius: BorderRadius.circular(8)),
-                                border: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: AppColors.greyLightColor,
-                                        width: 0.5),
-                                    borderRadius: BorderRadius.circular(8))),
+                            decoration: TextFormFieldDecoration(
+                              "example@gmail.com",
+                              const Icon(Icons.email_outlined),
+                            ),
                           ),
                           SizedBox(height: 20.h),
                           TextFormField(
                             obscureText: _obscureText,
-                            validator: LoginPage.validatorPassword,
+                            validator: (input) =>
+                                EmailValidator.validatorPassword(input),
                             controller: _passwordController,
                             onTap: () {},
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(15),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
+                            decoration: TextFormFieldDecoration(
+                              "********",
+                              IconButton(
+                                icon: Icon(
                                     _obscureText
                                         ? Icons.visibility_off
                                         : Icons.visibility,
-                                    color: Theme.of(context).primaryColorDark,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _toggle();
-                                    });
-                                  },
-                                ),
-                                hintText: "******",
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: AppColors.greyLightColor,
-                                        width: 1),
-                                    borderRadius: BorderRadius.circular(8)),
-                                border: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: AppColors.greyLightColor,
-                                        width: 0.5),
-                                    borderRadius: BorderRadius.circular(8))),
+                                    color: _obscureText
+                                        ? AppColors.greyColor
+                                        : AppColors.blue),
+                                onPressed: () {
+                                  setState(() {
+                                    _toggle();
+                                  });
+                                },
+                              ),
+                            ),
                           ),
                           SizedBox(height: 20.h),
                           SizedBox(
@@ -167,6 +137,12 @@ class _LoginPageState extends State<LoginPage> {
                                   print(
                                       'Password: ${_passwordController.text}');
                                   FocusScope.of(context).unfocus();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MyHomePage()),
+                                  );
                                 }
                               },
                               style: ButtonStyle(
