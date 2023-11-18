@@ -4,7 +4,7 @@ import 'package:stc_health_app/Data/Datasource/Resources/color_pallete.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/email_validator_extension.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/strings.dart';
 import 'package:stc_health_app/Presentation/Widgets/Auth/Component/textformfield_decoration.dart';
-import 'package:stc_health_app/Presentation/Widgets/Dashboard/dashboard_screen.dart';
+import 'package:stc_health_app/Presentation/Widgets/Dashboard/BottomNavigationScreen/bottom_navigation_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const MyHomePage()),
+                                            const BottomNavigationScreen()),
                                   );
                                 }
                               },

@@ -7,6 +7,7 @@ class AppColors {
   static const Color darkblue = Color(0xff08293B);
   static const Color white = Colors.white;
   static const Color greyLightColor = Color(0xff8C8C8C);
+  static const Color pinkishColor = Color(0xfff1f1f1);
   static var lightGreyColor = Colors.grey.shade400;
 
   static const Color whiteColor = Colors.white;
