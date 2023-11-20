@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stc_health_app/Application/Services/navigation.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/color_pallete.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/email_validator_extension.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/strings.dart';
@@ -24,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  bool _isEmailValid = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -92,13 +94,21 @@ class _LoginPageState extends State<LoginPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextFormField(
+                            onChanged: (value) {
+                              setState(() {
+                                _isEmailValid = value.isValidEmail();
+                              });
+                            },
                             validator: (input) => input!.isValidEmail()
                                 ? null
                                 : "Check your email",
                             controller: _emailController,
                             decoration: TextFormFieldDecoration(
                               "example@gmail.com",
-                              const Icon(Icons.email_outlined),
+                              Icon(Icons.check_circle_outline_outlined,
+                                  color: _isEmailValid
+                                      ? Colors.green
+                                      : AppColors.greyColor),
                             ),
                           ),
                           SizedBox(height: 20.h),
@@ -137,12 +147,8 @@ class _LoginPageState extends State<LoginPage> {
                                   print(
                                       'Password: ${_passwordController.text}');
                                   FocusScope.of(context).unfocus();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const BottomNavigationScreen()),
-                                  );
+                                  Navigate.toReplace(
+                                      context, const BottomNavigationScreen());
                                 }
                               },
                               style: ButtonStyle(

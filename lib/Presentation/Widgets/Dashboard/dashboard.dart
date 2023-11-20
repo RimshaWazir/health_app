@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stc_health_app/Application/Services/navigation.dart';
 import 'package:stc_health_app/Data/Datasource/Resources/strings.dart';
 import 'package:stc_health_app/Presentation/Common/product_listview.dart';
 import 'package:stc_health_app/Presentation/Widgets/Dashboard/product__detail.dart';
@@ -42,19 +43,7 @@ class HomeScreen extends StatelessWidget {
         SizedBox(
           height: 7.sp,
         ),
-        InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ProductDetail()),
-            );
-          },
-          child: ProductListView(
-            model: AppStrings.modelNo,
-            detail: AppStrings.productDetail,
-            text: AppStrings.productName,
-          ),
-        )
+        ProductListView()
       ],
     );
   }

@@ -1,0 +1,12 @@
+{  
+  "@@locale": "en",
+  "login": "Login",
+  "email" : "Email",
+  "password" : "Password",
+  "automaticFastBluetooth" : "Automatic fast bluetooth stability connection to choosen device",
+ 
+       "thanksForUsing":"Thanks For using Bluetooth Auto Connect App"
+
+
+ 
+}
