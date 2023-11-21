@@ -1,11 +1,9 @@
 class AppStrings {
-  static const String login = "Login";
-  static const String stcHealth = "STC\nHEALTH";
-  static const String continueText = "Continue";
-  static const String allProducts = "All Products";
-
-  static const String modelNo = "00000 AED";
-  static const String productName = "Shoes";
-  static const String productDetail =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna";
+  static const String stcHealth = '   STC \nHEALTH';
+  static const String login = "Log In";
+  static const String continueString = 'Continue';
+  static const String needHelp = 'NEED HELP?';
+  static const String details = 'Details';
+  static const String orderNow = 'OrderNow';
+  static const String allProducts = 'All Products';
 }
