@@ -21,7 +21,7 @@ class ProductDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: 1.sh,
+        height: 2.sh,
         width: 1.sw,
         decoration: BoxDecoration(
           gradient: LinearGradient(

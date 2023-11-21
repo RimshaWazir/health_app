@@ -62,7 +62,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         );
                       },
                       separatorBuilder: (context, index) {
-                        return 10.y;
+                        return 1.y;
                       },
                       itemCount: state.product.length);
                 } else if (state is ProductLoading) {
